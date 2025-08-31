@@ -38,6 +38,7 @@
     "saloonphp/saloon": "^3.8",
     "saloonphp/laravel-plugin": "^3.0",
     "laravel/socialite": "^5.12",
+    "socialiteproviders/oidc-generic": "^4.0",
     "laravel/ui": "^4.5",
     "nunomaduro/collision": "^v8",
     "league/flysystem-sftp-v3": "^3.0",

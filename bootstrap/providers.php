@@ -3,6 +3,7 @@
 return [
     Jackiedo\DotenvEditor\DotenvEditorServiceProvider::class,
     Intervention\Image\ImageServiceProvider::class,
+    SocialiteProviders\Manager\ServiceProvider::class,
 
     Laravel\Scout\ScoutServiceProvider::class,
     OwenIt\Auditing\AuditingServiceProvider::class,

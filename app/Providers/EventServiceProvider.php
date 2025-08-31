@@ -32,6 +32,7 @@ use App\Observers\PlaylistCollaborationTokenObserver;
 use App\Observers\RadioStationObserver;
 use App\Observers\UserObserver;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as BaseServiceProvider;
+use SocialiteProviders\Manager\SocialiteWasCalled;
 
 class EventServiceProvider extends BaseServiceProvider
 {
@@ -64,6 +65,10 @@ class EventServiceProvider extends BaseServiceProvider
 
         NewPlaylistCollaboratorJoined::class => [
             MakePlaylistSongsPublic::class,
+        ],
+
+        SocialiteWasCalled::class => [
+            'SocialiteProviders\\OidcGeneric\\OidcGenericExtendSocialite@handle',
         ],
     ];
 
