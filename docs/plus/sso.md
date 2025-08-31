@@ -1,7 +1,10 @@
 # Single Sign-On
 
 Apart from the default authentication mechanism with email and password, users can also log in to Koel Plus via Single Sign-On (SSO).
-As of current, the only supported SSO provider is Google, with more to come in the future.
+Koel Plus supports the following SSO providers:
+
+- Google OAuth
+- OpenID Connect (generic/configurable provider)
 
 ## Google
 
@@ -29,6 +32,48 @@ Save the `.env` file and reload Koel. You should now see a "Log in with Google" 
 <img src="../assets/img/plus/login-form-google.webp" loading="lazy" style="width: 324px" alt="Google login button">
 
 Clicking on the Google button will open a new window where you can log in with your Google account (make sure to allow pop-ups if you have a pop-up blocker enabled).
+
+## OpenID Connect
+
+Koel Plus supports generic OpenID Connect providers, which allows you to integrate with various identity providers such as Keycloak, Auth0, Okta, Azure AD, and others that support the OpenID Connect standard.
+
+To enable SSO with an OpenID Connect provider, you need to:
+
+1. **Create an OAuth/OIDC application** in your identity provider's admin console
+2. **Set the redirect URI** to `https://<your-koel-domain>/auth/oidc/callback`
+3. **Configure your `.env` file** with the following settings:
+
+```
+SSO_OIDC_CLIENT_ID=<your-client-id>
+SSO_OIDC_CLIENT_SECRET=<your-client-secret>
+SSO_OIDC_ISSUER=<your-oidc-issuer-url>
+SSO_OIDC_NAME=<friendly-provider-name>
+```
+
+Where:
+- `SSO_OIDC_CLIENT_ID`: The client ID from your OIDC provider
+- `SSO_OIDC_CLIENT_SECRET`: The client secret from your OIDC provider  
+- `SSO_OIDC_ISSUER`: The issuer URL of your OIDC provider (e.g., `https://your-provider.com/auth/realms/your-realm`)
+- `SSO_OIDC_NAME`: A friendly name for the provider (optional, defaults to "OpenID Connect")
+
+### Common Provider Examples
+
+**Keycloak:**
+```
+SSO_OIDC_ISSUER=https://your-keycloak.com/auth/realms/your-realm
+```
+
+**Auth0:**
+```
+SSO_OIDC_ISSUER=https://your-tenant.auth0.com/
+```
+
+**Azure AD:**
+```
+SSO_OIDC_ISSUER=https://login.microsoftonline.com/{tenant-id}/v2.0
+```
+
+Save the `.env` file and reload Koel. You should now see a login button for your OpenID Connect provider on the login page.
 
 ## User Management
 

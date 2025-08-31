@@ -41,6 +41,14 @@ return [
         'hd' => env('SSO_GOOGLE_HOSTED_DOMAIN'),
     ],
 
+    'oidc-generic' => [
+        'client_id' => env('SSO_OIDC_CLIENT_ID'),
+        'client_secret' => env('SSO_OIDC_CLIENT_SECRET'),
+        'redirect' => '/auth/oidc/callback',
+        'issuer' => env('SSO_OIDC_ISSUER'),
+        'name' => env('SSO_OIDC_NAME', 'OpenID Connect'),
+    ],
+
     'gravatar' => [
         'url' => env('GRAVATAR_URL', 'https://www.gravatar.com/avatar'),
         'default' => env('GRAVATAR_DEFAULT', 'robohash'),

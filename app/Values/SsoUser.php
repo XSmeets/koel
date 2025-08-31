@@ -45,6 +45,6 @@ final class SsoUser
 
     public static function assertValidProvider(string $provider): void
     {
-        Assert::oneOf($provider, ['Google', 'Reverse Proxy']);
+        Assert::oneOf($provider, ['Google', 'OpenID Connect', 'Reverse Proxy']);
     }
 }
